@@ -79,7 +79,18 @@ const getAllFromDB = async (
       user: true,
       reviews: true,
       bookingServices: true,
-      reportServices: true,
+      RepairingPayment: {
+        include: {
+          user: true,
+          repairingCategory: true,
+        },
+      },
+      reportServices: {
+        include: {
+          user: true,
+          repairingCategory: true,
+        },
+      },
     },
   });
 

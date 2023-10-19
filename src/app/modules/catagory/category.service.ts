@@ -25,9 +25,6 @@ const getSingleFromDB = async (id: string): Promise<Category | null> => {
     where: {
       id,
     },
-    include: {
-      repairingCategories: true,
-    },
   });
 
   return isExistCatagory;
