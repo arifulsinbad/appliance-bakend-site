@@ -30,6 +30,16 @@ router.patch(
   '/booking-decreament',
   RepairingCategoryController.updateBookingDecreamnet
 );
+router.post(
+  '/report',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER),
+  RepairingCategoryController.reportPost
+);
+router.delete(
+  '/reportId',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN),
+  RepairingCategoryController.deleteReport
+);
 router.patch('/:id', RepairingCategoryController.updateIntoDB);
 router.delete('/:id', RepairingCategoryController.deleteFromDB);
 export const RepairingCategoryRoute = router;

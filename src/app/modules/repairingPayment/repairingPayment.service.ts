@@ -2,8 +2,10 @@ import { RepairingPayment } from '@prisma/client';
 import prisma from '../../../shared/prisma';
 
 const insertIntoDB = async (
+  id: string,
   data: RepairingPayment
 ): Promise<RepairingPayment> => {
+  data.userId = id;
   const result = await prisma.repairingPayment.create({
     data,
   });

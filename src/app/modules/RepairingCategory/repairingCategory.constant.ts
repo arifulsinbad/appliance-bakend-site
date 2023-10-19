@@ -1,18 +1,15 @@
 export const RepairingCategorySearchAbleFields = [
-  'title',
-  'rating',
-  'address',
+  'location',
   'details',
-  'bookingCount',
-  'reviews',
+  'title',
 ];
 export const RepairingCategoryFilterAbleFields = [
   'searchTerm',
   'title',
-  'rating',
-  'address',
+
+  'location',
   'details',
-  'bookingCount',
+
   'userId',
   'categoryId',
 ];

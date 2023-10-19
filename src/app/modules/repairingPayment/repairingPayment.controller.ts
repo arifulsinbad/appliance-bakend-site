@@ -5,7 +5,8 @@ import { Request, Response } from 'express';
 import { RepairingPaymentService } from './repairingPayment.service';
 
 const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await RepairingPaymentService.insertIntoDB(req.body);
+  const user = (req as any).user;
+  const result = await RepairingPaymentService.insertIntoDB(user?.id, req.body);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,

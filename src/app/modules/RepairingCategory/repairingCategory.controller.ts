@@ -17,6 +17,26 @@ import { FileUploaderHelper } from '../../../helpers/fileUploaderHelper';
 //         data:result
 //     })
 // })
+const reportPost = catchAsync(async (req: Request, res: Response) => {
+  const user = (req as any).user;
+  const result = await RepairingCategoryService.reportPost(user?.id, req.body);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Reported success',
+    data: result,
+  });
+});
+const deleteReport = catchAsync(async (req: Request, res: Response) => {
+  const { reportId } = req.params;
+  const result = await RepairingCategoryService.deleteReport(reportId);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Deleted success',
+    data: result,
+  });
+});
 const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
   // console.log(req.file);
   const user = (req as any).user;
@@ -136,4 +156,6 @@ export const RepairingCategoryController = {
   getSingleFromDB,
   reviewPost,
   updateRating,
+  deleteReport,
+  reportPost,
 };

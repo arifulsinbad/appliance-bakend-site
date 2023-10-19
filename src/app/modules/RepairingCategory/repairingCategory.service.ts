@@ -1,4 +1,9 @@
-import { Prisma, RepairingCategory, Review } from '@prisma/client';
+import {
+  Prisma,
+  RepairingCategory,
+  ReportService,
+  Review,
+} from '@prisma/client';
 import prisma from '../../../shared/prisma';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
@@ -171,6 +176,25 @@ const reviewPost = async (data: Review) => {
   });
   return result;
 };
+const reportPost = async (
+  id: string,
+  data: ReportService
+): Promise<ReportService> => {
+  data.userId = id;
+  console.log(data);
+  const result = await prisma.reportService.create({
+    data,
+  });
+  return result;
+};
+const deleteReport = async (id: string): Promise<ReportService> => {
+  const result = await prisma.reportService.delete({
+    where: {
+      id: id,
+    },
+  });
+  return result;
+};
 export const RepairingCategoryService = {
   insertIntoDB,
   getAllFromDB,
@@ -181,4 +205,6 @@ export const RepairingCategoryService = {
   deleteFromDB,
   reviewPost,
   updateRating,
+  reportPost,
+  deleteReport,
 };

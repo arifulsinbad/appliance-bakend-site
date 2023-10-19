@@ -32,6 +32,10 @@ const moduleRoutes = [
     routes: MyProfileRoute,
   },
   {
+    path: '/payments',
+    routes: RepairingPaymentRoute,
+  },
+  {
     path: '/repairingCategories',
     routes: RepairingCategoryRoute,
   },
