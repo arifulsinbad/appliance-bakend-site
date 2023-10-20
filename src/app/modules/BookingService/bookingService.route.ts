@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post(
   '/',
-  auth(ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER, ENUM_USER_ROLE.SUPER_ADMIN),
   BookingServiceController.insertIntoDB
 );
 router.get('/', BookingServiceController.getAllFromDB);

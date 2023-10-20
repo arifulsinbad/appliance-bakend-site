@@ -22,7 +22,11 @@ router.get(
   auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
   UserController.getAllFromDB
 );
-router.get('/:id', auth(ENUM_USER_ROLE.ADMIN), UserController.getSingleFromDB);
+router.get(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.USER),
+  UserController.getSingleFromDB
+);
 router.delete(
   '/:id',
   auth(ENUM_USER_ROLE.SUPER_ADMIN),
